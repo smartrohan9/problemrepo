@@ -1,0 +1,45 @@
+.normal-form{
+    margin: 10px;
+    height: 850px;
+    width: 1050px;
+}
+
+.mat-grid-tile {
+    // background: lightyellow;
+}
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+.mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;
+  }
+.option-select{
+    margin: 15px;
+  }
+.add-button-padding{
+    margin: 15px;
+  }
+  table {
+    width: 100%;
+  }
+.container
+{
+  width: 800px;
+    height: 50px;
+    color: cornsilk;
+    align-content: center;
+    text-align: center;
+    background-color: #9c27b0;
+}
+.damaged{
+  width: 100%;
+  position: relative;
+  top: 40px;
+}
+.myDiv{
+  width: 1100px;
+  color: #181616;
+  align-content: center;
+  text-align: center
+}

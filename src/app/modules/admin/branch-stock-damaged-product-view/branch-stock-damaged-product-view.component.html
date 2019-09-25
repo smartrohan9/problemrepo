@@ -1,0 +1,60 @@
+<div>
+  <table class="table table-bordered table-hover table-info">
+    <tr>
+      <th scope="col">Product code</th>
+      <th scope="col">HSNCode</th>
+      <th scope="col">Product Name</th>
+      <!-- <th scope="col">Vender name</th> -->
+      <th scope="col">BuyingPrice</th>
+      <!-- <th scope="col">Request Quantity</th>
+      <th scope="col">Approved Quantity</th> -->
+    </tr>
+    <ng-container  *ngFor="let recipient of mappd | keyvalue" >
+      <tr>
+        <td>{{recipient.key.productInformation.productCode}}</td>
+        <td>{{recipient.key.productInformation.hsnCode}}</td>
+        <td>{{recipient.key.productInformation.productName}}</td>
+        <!-- <td>{{recipient.key.venderInformation.vendorName}}</td> -->
+        <td>{{recipient.key.buyingPrice}}</td>
+        <td>{{recipient.value.purchesOrderproductwisequantity}}</td>
+        <!-- <td> 
+          <mat-form-field >
+            <input matInput  value="{{recipient.value.purchesOrderproductwisequantity}}" >
+           <mat-error *ngIf="myForm.controls.phoneNumbers.controls.errors?.required">Min size: 1</mat-error> 
+           <mat-error *ngIf="myform.controls.['phoneNumbersControl'].errors?.min">Min size: 1</mat-error> 
+          </mat-form-field>
+        </td> -->
+      </tr>
+    </ng-container>
+  </table>
+  </div>
+
+
+<!-- <div class="container" *ngFor="let element of listallBranchStockDamageData">
+ <table mat-table [dataSource]="dataSource" class="mat-elevation-z8"  *ngFor="let recipient of mappd | keyvalue">
+
+    <ng-container matColumnDef="productName">
+      <th mat-header-cell *matHeaderCellDef> Product Name </th>
+      <td mat-cell *matCellDef="let element"> {{recipient.key.productInformation.productName}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="DamageStockBranchComplainQuantity">
+      <th mat-header-cell *matHeaderCellDef> Quantity </th>
+      <td mat-cell *matCellDef="let element"> 
+          <div *ngFor="let m of element.mappd | keyvalue">
+            {{recipient.value.damageStockQuantity}}
+          </div>
+      </td>
+      </ng-container>
+
+    <ng-container matColumnDef="remarks">
+      <th mat-header-cell *matHeaderCellDef> Remarks </th>
+      <td mat-cell *matCellDef="let element">{{element.remarks}}</td>
+  </ng-container>
+   
+    <tr mat-header-row *matHeaderRowDef="displayedbranchStockDamagedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns:displayedbranchStockDamagedColumns;"></tr>
+
+</table>
+</div>
+</div> -->

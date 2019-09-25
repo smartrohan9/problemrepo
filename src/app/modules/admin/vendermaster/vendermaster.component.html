@@ -1,0 +1,175 @@
+
+    <div class="header">
+      <h3 style="font-family: Arial, Helvetica, sans-serif">Vendor Master</h3>
+      </div>
+        <form [formGroup]="form" class="normal-form">
+          
+            <mat-grid-list cols="2" rowHeight="1:1">
+                <mat-grid-tile>
+                    <div class="controles-container">
+                        <mat-form-field appearance="outline">
+                          <mat-label>VendorName</mat-label>
+                              <input formControlName="vendorname" matInput placeholder="VendorName" [(ngModel)]="vendermaster.allvenderinfo.vendorName">
+                              <mat-error *ngIf="haserror('vendorname','required')">vendor name is required</mat-error>
+                              <mat-error *ngIf="haserror('vendorname','pattern')">A-Z/0-9 allowed</mat-error>
+                              <mat-error *ngIf="haserror('vendorname','minlength')">min length 3</mat-error>
+                              <mat-error *ngIf="haserror('vendorname','maxlength')">max length 12</mat-error>
+                             
+                        </mat-form-field>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Email</mat-label>
+                               <input formControlName="email" matInput placeholder="Email"[(ngModel)]="vendermaster.allvenderinfo.vendorEmail">
+                               <mat-error *ngIf="haserror('email','required')">email is required</mat-error>
+                               <mat-error *ngIf="haserror('email','minlength')">min length 5</mat-error>
+                               <mat-error *ngIf="haserror('email','maxlength')">max length 20</mat-error>
+    
+                               
+                          </mat-form-field>
+                          <mat-form-field appearance="outline">
+                              <mat-label>VendorContactNo</mat-label>
+                                 <input formControlName="vendorcontactno" matInput placeholder="VendorContactNo"[(ngModel)]="vendermaster.allvenderinfo.vendorContactNumber">
+                                 <mat-error *ngIf="haserror('vendorcontactno','required')">VendorContactNo is required</mat-error>
+                                 <mat-error *ngIf="haserror('vendorcontactno','pattern')">0-9 allowed</mat-error>
+                                 <mat-error *ngIf="haserror('vendorcontactno','minlength')">min length 10</mat-error>
+                                 <mat-error *ngIf="haserror('vendorcontactno','maxlength')">max length 10</mat-error>
+                                
+                            </mat-form-field>
+                             
+                            <!-- <mat-form-field appearance="outline">
+                                <mat-label>ProductProvider</mat-label>
+                                   <input formControlName="productprovider" matInput placeholder="ProductProvider">
+                                <mat-hint>Hint</mat-hint>
+                              </mat-form-field> -->
+                              <!-- <div class="option-select">
+                                  <mat-form-field>
+                                    <mat-label>Select an ProductProvider</mat-label>
+                                    <mat-select formControlName="ProductProvider">
+                                      <mat-option>None</mat-option>
+                                      <mat-option value="option1">PUNE</mat-option>
+                                      <mat-option value="option2">MUMBAI</mat-option>
+                                      <mat-option value="option3">NAGPUR</mat-option> -->
+                                      <!-- <mat-selection-list #shoes>
+                
+                                          <mat-list-option *ngFor="let shoe of productprovider"[value]="VendorName">
+                                         {{shoe}}
+                                       </mat-list-option>
+                                     </mat-selection-list>
+                                     <p>
+                                       Options selected: {{shoes.selectedOptions.selected.length}}
+                                     </p>
+                                   
+                                    </mat-select>
+                                  </mat-form-field>
+                               </div> -->
+                             <!-- <mat-selection-list #shoes>
+                
+                                   <mat-list-option *ngFor="let shoe of productprovider"[value]="VendorName">
+                                  {{shoe}}
+                                </mat-list-option>
+                              </mat-selection-list>
+                              <p>
+                                Options selected: {{shoes.selectedOptions.selected.length}}
+                              </p>
+                               -->
+                              <mat-form-field appearance="outline">
+                                  <mat-label>vendorPincode</mat-label>
+                                     <input formControlName="vendorPincode" matInput placeholder="vendorPincode"  [(ngModel)]="vendermaster.allvenderinfo.vendorPincode">
+                                     <mat-error *ngIf="haserror('vendorPincode','required')">vendorPincode is required</mat-error>
+    
+                                     
+                                </mat-form-field> 
+                                <mat-form-field appearance="outline">
+                                  <mat-label>vendorAddress</mat-label>
+                                     <input formControlName="vendorAddress" matInput placeholder="vendorAddress"[(ngModel)]="vendermaster.allvenderinfo.vendorAddress">
+                                     <mat-error *ngIf="haserror('vendorAddress','required')">address is required</mat-error>
+                                     
+                                </mat-form-field>
+                                <div class="add-button-padding">vendorStatus
+                            <mat-radio-group formControlName="status" [(ngModel)]="vendermaster.allvenderinfo.vendorStatus">  
+                              <mat-radio-button value="enable">enable</mat-radio-button>
+                              <mat-radio-button value="disable">disable</mat-radio-button>
+                              <mat-error *ngIf="haserror('status','required')">status is required</mat-error>
+                            </mat-radio-group>
+                         </div>
+    
+                         <mat-form-field appearance="outline">
+                          <mat-label>state</mat-label>
+                             <input formControlName="state" matInput placeholder="state"[(ngModel)]="vendermaster.allvenderinfo.state">
+                             <mat-error *ngIf="haserror('state','required')">state is required</mat-error>
+                             
+                        </mat-form-field>
+    
+                        <mat-form-field appearance="outline">
+                          <mat-label>district</mat-label>
+                             <input formControlName="district" matInput placeholder="district"[(ngModel)]="vendermaster.allvenderinfo.district">
+                             <mat-error *ngIf="haserror('district','required')">district is required</mat-error>
+                            
+                        </mat-form-field>
+    
+                         <!-- <mat-toolbar>
+                            <mat-form-field>
+                                <mat-label>State</mat-label>
+                                  <mat-select>
+                                    <mat-option>None</mat-option>
+                                    
+                                     <mat-option *ngFor="let state of allStateName"[value]="state.stateId" (onSelectionChange)="getStateById(state.stateId); getstatedata(state)">{{state.stateName}}</mat-option>
+    
+                                </mat-select>
+                            </mat-form-field>
+                            <mat-form-field>
+                                <mat-label>District</mat-label>
+                                  <mat-select>
+                                    <mat-option>None</mat-option>
+                                      <mat-option *ngFor="let district of allDistrictName" [value]="district" (onSelectionChange)="getdistrictdata(district)">{{district.districtName}}</mat-option>
+                                  </mat-select>
+                            </mat-form-field>
+                            </mat-toolbar>   -->
+                        <button type="submit" class="btn btn-success" [disabled]="form.invalid" (click)="save(vendermaster.allvenderinfo)">SAVE</button>
+                           <!-- <div class="col-md-4">
+                          <button class="btn btn-primary btn-lg btn block" (click)="reset(allvenderinfo)">CLEAR</button>
+                        </div> -->
+                      </div>
+    
+                      
+                </mat-grid-tile>
+              </mat-grid-list>
+            </form> 
+            <!-- <div class="option-select">
+                            <mat-form-field>
+                              <mat-label>Select an State</mat-label>
+                              <mat-select formControlName="state">
+                                <mat-option>None</mat-option>
+                                <mat-option value="option1">India</mat-option>
+                                <mat-option value="option2">Calforniya</mat-option>
+          
+                              </mat-select>
+                            </mat-form-field>
+                         </div>
+                         <div class="option-select">
+                            <mat-form-field>
+                              <mat-label>Select an District</mat-label>
+                              <mat-select formControlName="district">
+                                <mat-option>None</mat-option>
+                                <mat-option value="option1">PUNE</mat-option>
+                                <mat-option value="option2">MUMBAI</mat-option>
+                                <mat-option value="option3">NAGPUR</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                         </div> -->
+                          
+                <!-- <mat-grid-tile>
+                  <div class="controles-container">
+                    <mat-form-field class="example-full-width">
+                      <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+                      <mat-datepicker-toggle matSuffix [for]="picker">
+                        <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+                      </mat-datepicker-toggle>
+                      <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                    <button mat-stroked-button color="primary">Primary</button>
+                    <button mat-stroked-button color="accent">Accent</button>
+                    <button mat-stroked-button color="warn">Warn</button>
+                  </div>
+                  
+                </mat-grid-tile> -->
+            

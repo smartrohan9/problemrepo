@@ -1,0 +1,161 @@
+<!-- <div class="main-content"> -->
+  <div class="container-fluid">
+    <div class="row">
+    <div class="col-md-12">
+        <h3 class="bmheading">BranchManager Dashboard</h3> 
+    </div>
+</div>
+  <div class="row">
+      <div class="col-lg-6 col-md-12">
+          <div class="card">
+              <div class="card-header card-header-tabs card-header-primary">
+                <div class="nav-tabs-navigation">
+                    <div class="nav-tabs-wrapper">
+                        <h4 class="card-title">NOTIFICATIONS</h4>
+                    </div>
+                </div>
+              </div>
+              <!-- <div class="card-body">
+                  <div class="tab-content">
+                      <div class="tab-pane active" id="profile"> -->
+                        <table mat-table [dataSource]="dataSource1" class="mat-elevation-z8"  >
+                            <!-- <div *ngFor="let re of element.pmap | keyvalue"> -->                                  
+                              <ng-container matColumnDef="productName">
+                                <th mat-header-cell *matHeaderCellDef> <h5><b>Target Notifications below :</b></h5> </th>
+                                <td mat-cell *matCellDef="let element">
+                                        <div *ngFor="let re of element.pmap | keyvalue">
+                                            <p><b>*</b> As per admin, Target of the <b> {{re.key.productInformation.productName}} </b> is <b> {{re.value.initialTargetQuantity}} </b>.</p>
+                                        </div>
+                                  </td>
+                              </ng-container>
+                             
+                              <!-- <ng-container matColumnDef="target">
+                                <th mat-header-cell *matHeaderCellDef> Target </th>
+                                <td mat-cell *matCellDef="let element">
+                                    <div *ngFor="let re of element.pmap | keyvalue">
+                                        {{re.value.initialTargetQuantity}}
+                                    </div>
+                                </td>
+                              </ng-container> -->
+                              <!-- </div> -->
+                              <tr mat-header-row *matHeaderRowDef="displayBranchPTColumns"></tr>
+                              <tr mat-row *matRowDef="let row; columns:displayBranchPTColumns;"></tr>
+                           
+                      </table>
+                      <!-- </div>
+   
+                  </div>
+              </div> -->
+          </div>
+      </div>
+      <!-- <div class="col-lg-6 col-md-12">
+        <div class="card">
+            <div class="card-header card-header-tabs card-header-primary">
+                <div class="nav-tabs-navigation">
+                    <div class="card-header card-header-warning">
+                        <h4 class="card-title">Feedback</h4> 
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card-body">
+                <div class="tab-content">
+                    <div class="tab-pane active" id="profile">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td>Sign contract for "What are conference organizers afraid of?"</td>                                    
+                                </tr>
+                                <tr>->
+                                    <td>Lines From Great Russian Literature? Or E-mails From My Boss?</td>                                   
+                                </tr>
+                                <tr>
+                                    <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
+                                    </td>                                   
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+ 
+                </div>
+            </div>
+        </div>
+    </div> -->
+  </div> <!-- row -->
+  <div class="row">
+    <div class="col-lg-12 col-md-12">
+        <div class="card">
+            <!-- <div class="card-header card-header-warning">
+                <h4 class="card-title">Product Status</h4>
+                <p class="card-category">New employees on 15th September, 2016</p>
+            </div> -->
+            <div class="card-header card-header-tabs card-header-primary">
+                <div class="nav-tabs-navigation">
+                    <div class="nav-tabs-wrapper">
+                        <h4 class="card-title">Product Status</h4>
+                    </div>
+                </div>
+            </div>
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8"  >
+                <!-- <div *ngFor="let re of element.pmap | keyvalue"> -->
+                  <ng-container matColumnDef="productCode">
+                    <th mat-header-cell *matHeaderCellDef> Product Code</th>
+                    <td mat-cell *matCellDef="let element">
+                            <div *ngFor="let re of element.pmap | keyvalue">
+    
+                    {{re.key.productInformation.productCode}} 
+                            </div>
+                        </td>
+                  </ng-container>
+                      
+                  <ng-container matColumnDef="productName">
+                    <th mat-header-cell *matHeaderCellDef> Product Name</th>
+                    <td mat-cell *matCellDef="let element">
+                            <div *ngFor="let re of element.pmap | keyvalue">
+                                    {{re.key.productInformation.productName}} 
+                            </div>
+                      </td>
+                  </ng-container>
+                 
+                  <ng-container matColumnDef="productStock">
+                    <th mat-header-cell *matHeaderCellDef> Stock </th>
+                    <td mat-cell *matCellDef="let element">
+                        <div *ngFor="let re of element.pmap | keyvalue">
+                            {{re.value.branchTotalStockQuantity}}
+                        </div>
+                    </td>
+                  </ng-container>
+                  <!-- </div> -->
+                  <tr mat-header-row *matHeaderRowDef="displayBranchColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns:displayBranchColumns;"></tr>
+               
+          </table>
+
+
+            <!-- <div class="card-body table-responsive">
+                <table class="table table-hover">
+                    <thead class="text-warning">
+                        <th>Product code</th>
+                        <th>Product Name</th>
+                        <th>Stock</th>
+                        <th>Target</th>
+                    </thead>
+                    <div  *ngFor="let item of listAllBranchProductStock">
+                    <tbody *ngFor="let item of listAllBranchProductStock">
+                        <tr>
+                            <td>{{item.productCode}}</td>
+                            <td>{{item.productName}}</td>
+                            <td>{{item.invoicewiseprodquantity}}</td>
+                            <td>{{item.branchinitialquantity}}</td>
+                        </tr>
+                        
+                    </tbody>
+                    </div>
+                </table>
+            </div> -->
+        </div>
+    </div>
+  </div>
+  <!-- </div> -->
+ 

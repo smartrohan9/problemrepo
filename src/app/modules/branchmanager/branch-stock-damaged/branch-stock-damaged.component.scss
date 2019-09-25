@@ -1,0 +1,34 @@
+.normal-form{
+    // margin: 10px;
+    width : 100%;  
+}
+
+.mat-grid-tile-cust {
+    background: lightyellow;
+    width: calc(((100% - 0.5px) * 1) + 0px);
+    left: 0px;
+    margin-top: 0px;
+    padding-top: 10px;
+    align-content: center;
+}
+
+.heading{
+    background-color: blueviolet;
+    color: #ffffff;
+    padding: 5px 5px 5px 5px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;
+  }
+.option-select{
+    margin: 15px;
+  }
+.add-button-padding{
+    margin: 15px;
+  }
+  table {
+    width: 100%;
+  }

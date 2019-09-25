@@ -1,0 +1,78 @@
+
+{{stateval}}
+{{districtval}}
+{{vendorval}}
+<div class="container">
+  <h3 style="text-align: center"><b>Vendor List</b></h3>
+</div>
+<div class="row">
+  <mat-toolbar>
+  <div class="col-md-3">
+    <mat-form-field>
+        <mat-label>State</mat-label>
+          <mat-select>
+            <mat-option>None</mat-option>
+              <mat-option *ngFor="let state of allStateName"  [value]="state" (onSelectionChange)="getStateById(state)">{{state.stateName}}</mat-option>
+          </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="col-md-3">
+    <mat-form-field>
+        <mat-label>District</mat-label>
+          <mat-select>
+            <mat-option>None</mat-option>
+              <mat-option *ngFor="let district of allDistrictName" [value]="district" (onSelectionChange)="getVendorByDistrict(district)">{{district.districtName}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+  </div>
+  <div class="col-md-3">
+    <mat-form-field>
+          <mat-label>Vendor Name</mat-label>
+            <mat-select>
+              <mat-option>None</mat-option>
+                <mat-option *ngFor="let vendorname of vendorNameByDistrict" [value]="vendorname" (onSelectionChange)="getPerticularVendor(vendorname)">{{vendorname.vendorName}}</mat-option>
+            </mat-select>
+    </mat-form-field>
+  </div>
+    <div class="col-md-2">
+      <button style="float: right;" class="btn btn-success" (click)="onSerach()" mat-button >Search</button>
+    </div>
+ 
+
+  
+  <!-- <div class="col-md-1">
+    <button style="float:left" class="btn btn-success" (click)="reset()" mat-button >Reset</button>
+  </div> -->
+  </mat-toolbar>  
+</div>
+  <div>
+      <mat-form-field>
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Vendor List"> 
+        </mat-form-field>
+        
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        
+          <!-- Position Column -->
+          <ng-container matColumnDef="vendorId">
+            <th mat-header-cell *matHeaderCellDef> No. </th>
+            <td mat-cell *matCellDef="let element"> {{element.vendorId}} </td>
+          </ng-container>
+        
+          <!-- Name Column -->
+          <ng-container matColumnDef="vendorName">
+            <th mat-header-cell *matHeaderCellDef> Vendor Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.vendorName}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="details">
+              <th mat-header-cell *matHeaderCellDef> Details </th>
+              <td mat-cell *matCellDef="let row"> <button mat-raised-button (click)="openDialog(row)">ViewDetails</button> </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedVendorColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedVendorColumns;"></tr>
+
+        </table>
+    </div>
+
+ 

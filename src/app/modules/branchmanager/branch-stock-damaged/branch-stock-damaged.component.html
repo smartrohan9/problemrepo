@@ -1,0 +1,104 @@
+<form [formGroup]="form" class="normal-form">
+  <mat-grid-list cols="2" rowHeight="1:1">
+    <div class="mat-grid-tile-cust" >
+        <h3 class="heading">Branch Stock Damaged Complain Form</h3>
+        <div class="col-md-6" style="margin-left: 25%;">
+        <div class="controles-container">
+            
+          <!-- <mat-form-field appearance="outline">
+            <mat-label>Product Name</mat-label>
+                <input formControlName="productname" matInput placeholder="Product Name">
+            <mat-hint>Hint</mat-hint>
+          </mat-form-field> -->
+          <div class="option-select">
+            <mat-form-field>
+              <mat-label>Select an ProductName</mat-label>
+              <mat-select formControlName="productName">
+                <mat-option>None</mat-option>
+                <mat-option *ngFor="let product of branchcomplainservice.listofproduct" [value]="product" (onSelectionChange)="m1(product,product.productInformation.productName)">{{product.productInformation.productName}}</mat-option>
+                
+              </mat-select>
+              
+              </mat-form-field>
+          </div>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Current Quantity</mat-label>
+               <input formControlName="currentStock" matInput placeholder="currentStock"  [(ngModel)]="currentStock" [value]="currentStock">
+            </mat-form-field>
+          
+          <mat-form-field appearance="outline">
+            <mat-label>Quantity</mat-label>
+               <input formControlName="quantity" matInput placeholder="Quantity"  [(ngModel)]="qty">
+               <mat-error class="text-danger" *ngIf="form.controls.quantity.invalid">Put less Value than Stock Available</mat-error>
+                <mat-error *ngIf="hasError('quantity','required')">Quantity is Required</mat-error>
+                <mat-error *ngIf="hasError('quantity','pattern')">only number allow</mat-error>
+            <!-- <mat-hint>Hint</mat-hint> -->
+          </mat-form-field>
+          
+           <mat-form-field appearance="outline">
+            <mat-label>Remarks</mat-label>
+               <input formControlName="remarks" matInput placeholder="Remarks" [(ngModel)]="branchcomplain.remarks">
+              
+            <!-- <mat-hint>Hint</mat-hint> -->
+          </mat-form-field> 
+          <!-- <span class="error-text" *ngIf="form.get('productName').errors && (form.get('productName').touched ||form.get('productName').dirty)">
+              <p> Name is Required</p>
+              <span *ngIf="form.get('productName').errors.pattern">
+              <p> Name must be of character only</p>
+              </span>
+           </span> -->
+          <!-- <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+               <input formControlName="email" matInput placeholder="Email">
+            <mat-hint>Hint</mat-hint>
+          </mat-form-field> 
+          <div class="add-button-padding">
+            <mat-radio-group formControlName="gender">
+              <mat-radio-button value="Male">Male</mat-radio-button>
+              <mat-radio-button value="Female">Female</mat-radio-button>
+            </mat-radio-group>
+         </div>
+         <div class="option-select">
+            <mat-form-field>
+              <mat-label>Select an CityName</mat-label>
+              <mat-select formControlName="city">
+                <mat-option>None</mat-option>
+                <mat-option value="option1">PUNE</mat-option>
+                <mat-option value="option2">MUMBAI</mat-option>
+                <mat-option value="option3">NAGPUR</mat-option>
+              </mat-select>
+            </mat-form-field>
+         </div>-->
+         
+        
+     
+    
+      <!-- <div class="row">
+        <div class="col-md-6">
+          <button class="btn btn-success" (click)="saveData(studentService.stu)">SAVE</button>
+        </div> -->
+ 
+       
+          <!-- <mat-form-field >
+            <input matInput [matDatepicker]="dateComplain" placeholder="Choose a date" [(ngModel)]="branchcomplain.dateComplain">
+            <mat-datepicker-toggle matSuffix [for]="dateComplain">
+            <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon> 
+            </mat-datepicker-toggle>
+            <mat-datepicker #dateComplain></mat-datepicker>
+          </mat-form-field> -->
+          <!-- <button mat-stroked-button color="primary">Primary</button>
+          <button mat-stroked-button color="accent">Accent</button>
+          <button mat-stroked-button color="warn">Warn</button> -->
+        
+          <div style="margin-top: 10px;">
+            <button mat-stroked-button class="btn btn-success btn-lg btn-block"[disabled]="form.invalid" color="primary" (click)="savedata(branchcomplainservice.branchcomplain,qty)">Add</button>
+    
+          </div>
+        </div> <!-- controles-container -->
+      <!-- </mat-grid-tile> -->
+      </div><!--col8 -->
+       </div>
+    </mat-grid-list>
+
+</form>  

@@ -1,0 +1,79 @@
+<mat-card>
+  <div class="damaged">
+    <div class="example-container">
+     <div class="myDiv">
+      <div class="card bg-primary">
+        <div class="card-header">
+          <p class="card-title" style="font-size: 25px; font-family: Arial, Helvetica, sans-serif">Customer Damaged Stock Complain</p>
+        </div>
+      </div>
+    </div>
+    <br>
+    <hr>
+    <form [formGroup]="damagedform" class="normal-form">
+      <div class="row">
+        <div class="col-md-4">
+          <mat-form-field appearance="outline">
+            <mat-label>Invoice No.</mat-label>
+              <input formControlName="invoiceno" (blur)="getInvoiceInfo(invoiceinfo.invoiceNo)" matInput placeholder="Invoice Number" [(ngModel)]="invoiceinfo.invoiceNo">
+          </mat-form-field> 
+        </div>
+        <div class="col-md-4">
+          <mat-form-field appearance="outline">
+            <mat-label>Customer No.</mat-label>
+               <input formControlName="customerno" matInput placeholder="Customer Number" [(ngModel)]="invoiceinfo.customerInformation.customerId" disabled>
+          </mat-form-field>
+        </div>  
+        <div class="col-md-4">
+           <mat-form-field appearance="outline">
+            <mat-label>Customer Name</mat-label>
+               <input formControlName="customername" matInput placeholder="Customer Name" [(ngModel)]="invoiceinfo.customerInformation.customerName" disabled>
+          </mat-form-field> 
+        </div>
+      </div>  
+
+      <div class="row">
+        <!-- <div class="col-md-4">
+          <mat-form-field appearance="outline">
+            <mat-label>Date</mat-label>
+              <input formControlName="date" matInput placeholder="Date" name="date" [(ngModel)]="date">
+            </mat-form-field> 
+        </div> -->
+        
+        <div class="col-md-4">
+          <mat-form-field>
+            <mat-label>Product</mat-label>
+              <mat-select>
+                <mat-option>None</mat-option>
+                    <mat-option *ngFor="let recipient of invoiceinfo.productQuantity | keyvalue" [value]="recipient.key" (onSelectionChange)="getProduct(recipient)">{{recipient.key.productInformation.productName}}</mat-option>
+              </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-4">
+          <mat-form-field appearance="outline">
+            <mat-label>Quantity</mat-label>
+              <input formControlName="quantity" (blur)="getProductPriceMap(quantity)"  matInput placeholder="Quantity" name="quantity" [(ngModel)]="quantity">
+            </mat-form-field> 
+        </div>
+      </div>
+      <div class="row"> 
+          <div class="col-md-4">
+          <mat-form-field appearance="outline">
+            <mat-label>Remark</mat-label>
+               <input formControlName="remark" matInput placeholder="Remark" [(ngModel)]="remarkval">
+           </mat-form-field> 
+          </div>
+      </div>    
+      
+      <div class="row">
+        <div class="col-md-6">
+            <button class="btn btn-success" mat-raised-button color="primary" (click)="customerDamagedStock(invoiceinfo)">Submit</button>
+        </div> 
+      </div>
+  </form> 
+</div>
+</div>
+</mat-card> 
+
+          
